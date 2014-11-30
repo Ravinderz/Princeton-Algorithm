@@ -13,6 +13,7 @@ public class Autocomplete {
     		throw new java.lang.NullPointerException();
     	}
     	this.quries = terms;
+    	Arrays.sort(quries);
     }
 
     // Return all terms that start with the given prefix, in descending order of weight.
@@ -21,20 +22,19 @@ public class Autocomplete {
     		throw new java.lang.NullPointerException();
     	}
     	Term temp = new Term(prefix, 0);
-    	Arrays.sort(quries, Term.byPrefixOrder(prefix.length()));
+    	
     	//for (int j = 0; j < 50000 ; j += 2000 ) {
     	//	StdOut.println(quries[j].query);
     	//}
-    	StdOut.println("Binarysearch try");
-    	StdOut.println(Term.byPrefixOrder(3).compare(new Term("sadf", 0), new Term("saef", 0)));
+    	//StdOut.println("Binarysearch try");
+    	//StdOut.println(Term.byPrefixOrder(3).compare(new Term("sadf", 0), new Term("saef", 0)));
     	
 
     	int i = BinarySearchDeluxe.firstIndexOf(quries, temp, Term.byPrefixOrder(prefix.length()));
     	int j = BinarySearchDeluxe.lastIndexOf(quries, temp, Term.byPrefixOrder(prefix.length()));
-    	StdOut.println(i);
-    	StdOut.println(j);	
-    	StdOut.println(quries[i].query);
-    	StdOut.println(quries[j].query);
+    	if (i == -1 || j == -1) {
+    		throw new java.lang.NullPointerException();
+    	}
 		Term[] matches = new Term[j - i + 1];
 		matches = Arrays.copyOfRange(quries, i, j);
 		Arrays.sort(matches, Term.byReverseWeightOrder());

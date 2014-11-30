@@ -42,7 +42,7 @@ public class Term implements Comparable<Term> {
                 String s1 = t1.query;
                 String s2 = t2.query;
                 int minlength = s1.length() < s2.length() ? s1.length() : s2.length();
-                if (minlength > r) {
+                if (minlength >= r) {
                     return s1.substring(0, r).compareTo(s2.substring(0, r));
                 } else if (s1.substring(0, minlength).compareTo(s2.substring(0, minlength)) == 0) {
                     if (s1.length() == minlength) return -1;

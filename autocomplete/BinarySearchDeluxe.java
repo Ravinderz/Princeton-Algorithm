@@ -13,7 +13,7 @@ public class BinarySearchDeluxe {
     	}
     	int l = 0;
     	int r = a.length - 1;
-    	StdOut.println(r);
+    	//StdOut.println(r);
     	while (l + 1 < r) {
     		int mid = l + (r - l)/2;
     		if (comparator.compare(key, a[mid]) <= 0) {
